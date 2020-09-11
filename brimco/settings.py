@@ -26,7 +26,7 @@ SECRET_KEY = 'c$%87$-!td*_c_%uujk29nz7lf=(xj(9s@sk7myrbg-w*fhs02'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [brimco.herokuapp.com]
+ALLOWED_HOSTS = ['brimco.herokuapp.com']
 
 
 # Application definition
