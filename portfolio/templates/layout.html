@@ -3,16 +3,16 @@
 <!DOCTYPE html>
 <html lang='en'>
     <head>
-        <title>{% block title %}Menu Planner{% endblock %}</title>
+        <title>{% block title %}Bri Mcomber{% endblock %}</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-        <!-- <link href='/static/styles.css' rel='stylesheet'></link> -->
+        <link href='{% static "style.css" %}' rel='stylesheet'></link>
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +21,29 @@
     </head>
 
     <body>
-        {% block body %}
-        {% endblock %}
+        <div id='layout-container'>
+            <div>
+                <nav>
+                    <a href="{% url 'portfolio:index' %}" class='logo'>Bri McOmber</a>
+                    <a href="{% url 'portfolio:projects' %}">Projects</a>
+                    <a href="{% url 'portfolio:contact' %}">Contact</a>
+                </nav>
+            </div>
+
+            <div id='body'>
+                {% block body %}
+                {% endblock %}
+            </div>
+
+            <footer>
+                <p>Bri McOmber</p>
+                <p>
+                    <!-- icons from https://iconmonstr.com/ -->
+                    <a href='https://github.com/brimco' target="_blank"><img src="{% static 'images/github.svg' %}" class='footer-img'></a>
+                    <a href='https://www.linkedin.com/in/brianne-mcomber/' target="_blank"><img src="{% static 'images/linkedin.svg' %}" class='footer-img'></a>
+                    <a href='mailto:bri.mcomber@gmail.com'><img src="{% static 'images/email.svg' %}" class='footer-img'></a>
+                </p>
+            </footer>
+        </div>
     </body>
 </html>
