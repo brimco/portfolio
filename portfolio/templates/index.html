@@ -1,7 +1,90 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    Home page
+    <div style='height: 200vh;'>
+        <!-- this empty div gives the header room to shrink before reaching the content -->
+    </div>
+
+    <div style='height: 100vh;'>
+        <p>
+            Content starts here
+        </p>
+    </div>
+
 {% endblock %}
 
 <h1>Home Page</h1>
+
+{% block script %}
+    <script>
+        // sizes in 'em'
+        const maxFontSize = 3
+        const minFontSize = 1
+        const changeFont = 0.0025
+
+        // heights in 'vh'
+        const maxHeight = 100
+        const minHeight = 14
+        const changeHeight = maxHeight / maxFontSize * changeFont
+
+        function start() {
+            const logo = document.querySelector('#header-logo') 
+            const header = document.querySelector('nav')
+            const hi = document.querySelector('#hi')
+
+            // set hi opacity and height
+            hi.style.opacity = '100%'
+            hi.style.height = '1em'
+
+            // change height of header to full screen
+            header.style.height = maxHeight + 'vh'
+            
+            // set initial font size
+            logo.style.fontSize = maxFontSize + 'em'
+            hi.style.fontSize = maxFontSize / 2 + 'em'
+
+            // set scroll to change size, header height
+            window.addEventListener('scroll', function(){
+                // set font size
+                let fontSize = Math.max(minFontSize, maxFontSize - (window.scrollY * changeFont))
+                logo.style.fontSize = fontSize + 'em'
+
+                // set height
+                let height = Math.max(minHeight, maxHeight - (window.scrollY * changeHeight))
+                header.style.height = height + 'vh'
+                logo.style.height = height + 'vh'
+
+                // fade hi opacity from 75 to 25
+                const percentProgress = (height - minHeight) / (maxHeight - minHeight)
+                hi.style.fontSize = fontSize / 2 + 'em'
+                if (percentProgress > 0.75) {
+                    hi.style.opacity = 1
+                }
+                else if (percentProgress > 0.25) {
+                    hi.style.opacity = (percentProgress - 0.25) / 0.5
+                    hi.style.height = '1em'
+                }
+                else {
+                    hi.style.opacity = '0%'
+                    hi.style.height = percentProgress + 'em'
+                }
+
+                // shrink hi height from 25 to 0
+
+            });
+
+
+        }
+
+        if( document.readyState !== 'loading' ) {
+            start();
+            
+        } else {
+            document.addEventListener('DOMContentLoaded', function () {
+                start();
+            })
+        }
+
+
+    </script>
+{% endblock %}

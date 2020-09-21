@@ -22,11 +22,14 @@
 
     <body>
         <div id='layout-container'>
-            <div>
+            <div id='header'>
                 <nav>
-                    <a href="{% url 'portfolio:index' %}" class='logo'>Bri McOmber</a>
-                    <a href="{% url 'portfolio:projects' %}">Projects</a>
-                    <a href="{% url 'portfolio:contact' %}">Contact</a>
+                    <a href="{% url 'portfolio:projects' %}"  id='header-left'>Projects</a>
+                    <div id='logo-div'>
+                        <div id='hi'>Hi, I'm</div>
+                        <a href="{% url 'portfolio:index' %}" id='header-logo'>Bri McOmber</a>
+                    </div>
+                    <a href="{% url 'portfolio:contact' %}" id='header-right'>Contact</a>
                 </nav>
             </div>
 
@@ -39,9 +42,9 @@
                 <p>Bri McOmber</p>
                 <p>
                     <!-- icons from https://iconmonstr.com/ -->
-                    <a href='https://github.com/brimco' target="_blank"><img src="{% static 'images/github.svg' %}" class='footer-img'></a>
-                    <a href='https://www.linkedin.com/in/brianne-mcomber/' target="_blank"><img src="{% static 'images/linkedin.svg' %}" class='footer-img'></a>
-                    <a href='mailto:bri.mcomber@gmail.com'><img src="{% static 'images/email.svg' %}" class='footer-img'></a>
+                    <a href='https://github.com/brimco' target="_blank"><img src="{% static 'images/github.svg' %}"></a>
+                    <a href='https://www.linkedin.com/in/brianne-mcomber/' target="_blank"><img src="{% static 'images/linkedin.svg' %}"></a>
+                    <a href='mailto:bri.mcomber@gmail.com'><img src="{% static 'images/email.svg' %}"></a>
                 </p>
             </footer>
         </div>
