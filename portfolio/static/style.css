@@ -3,6 +3,11 @@
   src: local('Pacifico'),
         url('../static/fonts/pacifico/Pacifico-Regular.ttf') format("truetype");
 }
+@font-face {
+  font-family: 'NixieOne';
+  src: local('NixieOne'),
+        url('../static/fonts/NixieOne/NixieOne-Regular.ttf') format("truetype");
+}
 
 html,
 body {
@@ -37,14 +42,16 @@ footer {
 }
 footer > p{
     margin: 0em;
+    font-family: 'NixieOne';
+    font-weight: bold;
 }
 footer p > a > img {
   width: 1.5em;
 }
 
 nav {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  /* font-size: 1.4em; */
+  font-family: 'NixieOne';
+  font-weight: bold;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   text-align: center;
@@ -57,11 +64,11 @@ nav {
 }
 nav > a {
   padding: 2em;
+  margin: 1em;
 }
 
 #logo-div {
   font-size: 1.7em;
-  /* font-size: 5vw; */
   font-family: 'Pacifico';
   display: inline;
   color: #56694f;
@@ -93,7 +100,19 @@ a:hover {
 #hi {
   height: 0px;
   opacity: 0%;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'NixieOne';
   text-align: left;
   padding-left: 1ch;
+}
+
+p {
+  font-family: 'NixieOne';
+  font-weight: bold;
+  padding: 1em;
+}
+
+@media (max-width: 760px) {
+  #logo-div {
+    font-size: 1.36em;
+  }
 }

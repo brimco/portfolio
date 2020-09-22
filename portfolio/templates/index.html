@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <div style='height: 200vh;'>
+    <div id='spacer' style='height: 200vh;'>
         <!-- this empty div gives the header room to shrink before reaching the content -->
     </div>
 
-    <div style='height: 100vh;'>
+    <div style='height: 200vh;'>
         <p>
             Content starts here
         </p>
@@ -17,31 +17,43 @@
 
 {% block script %}
     <script>
+        //desktop
+
         // sizes in 'em'
-        const maxFontSize = 3
-        const minFontSize = 1
-        const changeFont = 0.0025
+        let maxFontSize = 3
+        let minFontSize = 1
+        let changeFont = 0.0025
+        let hiFontRatio = 0.5
 
         // heights in 'vh'
-        const maxHeight = 100
-        const minHeight = 14
-        const changeHeight = maxHeight / maxFontSize * changeFont
+        let maxHeight = 100
+        let minHeight = 14
+        let changeHeight = maxHeight / maxFontSize * changeFont
+        
 
         function start() {
+            // mobile settings
+            if (window.matchMedia("only screen and (max-width: 760px)").matches) {
+                maxFontSize = 2.25
+                minHeight = 10
+                document.querySelector('#spacer').style.height = '150vh'
+            }
+
+            // get elements
             const logo = document.querySelector('#header-logo') 
             const header = document.querySelector('nav')
             const hi = document.querySelector('#hi')
 
-            // set hi opacity and height
+            // set initial opacity and height
             hi.style.opacity = '100%'
             hi.style.height = '1em'
 
-            // change height of header to full screen
+            // set initial height of header
             header.style.height = maxHeight + 'vh'
             
             // set initial font size
             logo.style.fontSize = maxFontSize + 'em'
-            hi.style.fontSize = maxFontSize / 2 + 'em'
+            hi.style.fontSize = maxFontSize * hiFontRatio + 'em'
 
             // set scroll to change size, header height
             window.addEventListener('scroll', function(){
@@ -54,14 +66,16 @@
                 header.style.height = height + 'vh'
                 logo.style.height = height + 'vh'
 
-                // fade hi opacity from 75 to 25
+                // fade hi opacity from 75 to 25, then shrink height to 0
+                const startFade = 0.75
+                const endFade = 0.15
                 const percentProgress = (height - minHeight) / (maxHeight - minHeight)
-                hi.style.fontSize = fontSize / 2 + 'em'
-                if (percentProgress > 0.75) {
+                hi.style.fontSize = fontSize * hiFontRatio + 'em'
+                if (percentProgress > startFade) {
                     hi.style.opacity = 1
                 }
-                else if (percentProgress > 0.25) {
-                    hi.style.opacity = (percentProgress - 0.25) / 0.5
+                else if (percentProgress > endFade) {
+                    hi.style.opacity = (percentProgress - endFade) / (startFade - endFade)
                     hi.style.height = '1em'
                 }
                 else {
