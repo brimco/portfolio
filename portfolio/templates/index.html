@@ -7,36 +7,69 @@
     </div>
 
     <div>
-        <p>
-            I'm a web developer with experience in... I'm currently looking for an internship or entry level position.
-        </p>
-        <p class='center'>
-            <h3>
+        <div>
+            <h3 class='lighter'>
+                I'm a web developer based in Tucson, Arizona. <br>
+                I'm currently looking for an <span class='highlight'>internship</span> or <span class='highlight'>entry level</span> position.
+            </h3>
+        </div>
+
+        <div>
+            <h3 class="pad-top">
                 Experienced In:
             </h3>
-            <img src="{% static '/images/html.svg' %}" class='icon'>
-            <img src="{% static '/images/css.svg' %}" class='icon'>
-            <img src="{% static '/images/javascript.svg' %}" class='icon'>
-            <img src="{% static '/images/bootstrap.svg' %}" class='icon'>
-            <img src="{% static '/images/react.svg' %}" class='icon'>
-            <img src="{% static '/images/python.svg' %}" class='icon'>
-            <img src="{% static '/images/django.svg' %}" class='icon'>
-            <img src="{% static '/images/github.svg' %}" class='icon'>
-        </p>
-        <p class='center'>
-            <h3>
+            <span class='icon' data-tooltip='HTML'>
+                <img src="{% static '/images/html.svg' %}" class='icon'>
+            </span>
+            <span class='icon' data-tooltip="CSS">
+                <img src="{% static '/images/css.svg' %}" class='icon'>
+            </span>
+            <span class='icon' data-tooltip="JavaScript">
+                <img src="{% static '/images/javascript.svg' %}" class='icon' data-text='JavaScript'>
+            </span>
+            <span class='icon' data-tooltip="Bootstrap">
+                <img src="{% static '/images/bootstrap.svg' %}" class='icon' data-text='Bootstrap'>
+            </span>
+            <span class='icon' data-tooltip="React">
+                <img src="{% static '/images/react.svg' %}" class='icon'>
+            </span>
+            <span class='icon' data-tooltip="Python">
+                <img src="{% static '/images/python.svg' %}" class='icon'>
+            </span>
+            <span class='icon' data-tooltip="Django">
+                <img src="{% static '/images/django.svg' %}" class='icon'>
+            </span>
+        </div>
+        <div>
+            <h3 class='pad-top'>
                 Currently Learning: 
             </h3>
-            <img src="{% static '/images/jquery.svg' %}" class='icon'>
-            <img src="{% static '/images/postgresql.svg' %}" class='icon'>
-        </p>
-        <p>
-            short resume summary
-        </p>
-        <p>
-            <a href='{% url "portfolio:projects" %}'>Check out some recent projects</a>
-            <a href='{% url "portfolio:contact" %}'>Get in touch.</a>
-        </p>
+            <span class='icon' data-tooltip="jQuery">
+                <img src="{% static '/images/jquery.svg' %}" class='icon'>
+            </span>
+            <span class='icon' data-tooltip="PostgreSQL">
+                <img src="{% static '/images/postgresql.svg' %}" class='icon'>
+            </span>
+        </div>
+        <div>
+            <h3 class='pad-top'>
+                Education:
+            </h3>
+            <h5 class='lighter'>
+                Chemical Engineering, B.S.<br>
+                Brigham Young University
+            </h5>              
+        </div>
+        <div class='pad-top pad-bottom'>
+            <h2 class='lighter'>
+                Feel free to check out some 
+                <a href='{% url "portfolio:projects" %}' class='highlight'>recent projects</a> 
+                or 
+                <a href='{% url "portfolio:contact" %}' class="highlight">get in touch.</a>
+            </h2>
+            
+            
+        </div>
     </div>
 
 {% endblock %}
@@ -59,7 +92,7 @@
         function start() {
             // mobile settings
             if (window.matchMedia("only screen and (max-width: 760px)").matches) {
-                maxFontSize = 2.25
+                maxFontSize = 2.75
                 minHeight = 10
                 document.querySelector('#spacer').style.height = '150vh'
             }
