@@ -1,13 +1,41 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block body %}
     <div id='spacer' style='height: 200vh;'>
         <!-- this empty div gives the header room to shrink before reaching the content -->
     </div>
 
-    <div style='height: 200vh;'>
+    <div>
         <p>
-            Content starts here
+            I'm a web developer with experience in... I'm currently looking for an internship or entry level position.
+        </p>
+        <p class='center'>
+            <h3>
+                Experienced In:
+            </h3>
+            <img src="{% static '/images/html.svg' %}" class='icon'>
+            <img src="{% static '/images/css.svg' %}" class='icon'>
+            <img src="{% static '/images/javascript.svg' %}" class='icon'>
+            <img src="{% static '/images/bootstrap.svg' %}" class='icon'>
+            <img src="{% static '/images/react.svg' %}" class='icon'>
+            <img src="{% static '/images/python.svg' %}" class='icon'>
+            <img src="{% static '/images/django.svg' %}" class='icon'>
+            <img src="{% static '/images/github.svg' %}" class='icon'>
+        </p>
+        <p class='center'>
+            <h3>
+                Currently Learning: 
+            </h3>
+            <img src="{% static '/images/jquery.svg' %}" class='icon'>
+            <img src="{% static '/images/postgresql.svg' %}" class='icon'>
+        </p>
+        <p>
+            short resume summary
+        </p>
+        <p>
+            <a href='{% url "portfolio:projects" %}'>Check out some recent projects</a>
+            <a href='{% url "portfolio:contact" %}'>Get in touch.</a>
         </p>
     </div>
 
@@ -17,8 +45,6 @@
 
 {% block script %}
     <script>
-        //desktop
-
         // sizes in 'em'
         let maxFontSize = 3
         let minFontSize = 1
@@ -30,7 +56,6 @@
         let minHeight = 14
         let changeHeight = maxHeight / maxFontSize * changeFont
         
-
         function start() {
             // mobile settings
             if (window.matchMedia("only screen and (max-width: 760px)").matches) {
@@ -82,14 +107,10 @@
                     hi.style.opacity = '0%'
                     hi.style.height = percentProgress + 'em'
                 }
-
-                // shrink hi height from 25 to 0
-
             });
-
-
         }
 
+        // start when page loaded and ready
         if( document.readyState !== 'loading' ) {
             start();
             
@@ -98,7 +119,5 @@
                 start();
             })
         }
-
-
     </script>
 {% endblock %}

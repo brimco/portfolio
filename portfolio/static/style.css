@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'Pacifico';
-  src: local('Pacifico'),
-        url('../static/fonts/pacifico/Pacifico-Regular.ttf') format("truetype");
-}
-@font-face {
   font-family: 'NixieOne';
   src: local('NixieOne'),
         url('../static/fonts/NixieOne/NixieOne-Regular.ttf') format("truetype");
+}
+@font-face {
+  font-family: 'ArimaMadurai';
+  src: local('ArimaMadurai'),
+        url('../static/fonts/ArimaMadurai/ArimaMadurai-Medium.ttf') format("truetype");
 }
 
 html,
@@ -19,18 +19,14 @@ body {
   min-height: 100%;
   position: relative;
 }
-#header {
-  position: fixed;
-  width: 100%;
-}
 #body {
-  padding: 0px;
+  padding-top: 4em; /* Height of the nav */
   padding-bottom: 5em;   /* Height of the footer */
-  background-color: #f8f8f8;
+  background-color: #f5f5f5;
+  text-align: center;
 }
 footer {
   text-align: center;
-  font-weight: lighter;
   font-size: larger;
   position: absolute;
   margin: 0px;
@@ -39,28 +35,26 @@ footer {
   height: 5em;   /* Height of the footer */
   padding: 1em;
   background-color: #84a179;
+  box-shadow: 0 -10px 10px -5px rgba(0,0,0,0.2);
 }
-footer > p{
-    margin: 0em;
-    font-family: 'NixieOne';
-    font-weight: bold;
+footer > div{
+    font-family: 'ArimaMadurai';
 }
-footer p > a > img {
+footer > div > a > img {
   width: 1.5em;
 }
 
 nav {
-  font-family: 'NixieOne';
-  font-weight: bold;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  position: fixed;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-weight: bold; */
   text-align: center;
   background-color: #e8e8e8;
   justify-content: center;
   display: inline-flex;
-  width: 100%;
   white-space: nowrap;
-  /* background-color: gold; */
+  box-shadow: 0 10px 10px -5px rgba(0,0,0,0.2);
 }
 nav > a {
   padding: 2em;
@@ -69,7 +63,7 @@ nav > a {
 
 #logo-div {
   font-size: 1.7em;
-  font-family: 'Pacifico';
+  font-family: 'ArimaMadurai';
   display: inline;
   color: #56694f;
   font-weight: 100;
@@ -100,14 +94,13 @@ a:hover {
 #hi {
   height: 0px;
   opacity: 0%;
-  font-family: 'NixieOne';
+  font-family: 'ArimaMadurai';
   text-align: left;
   padding-left: 1ch;
 }
 
 p {
-  font-family: 'NixieOne';
-  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 1em;
 }
 
@@ -115,4 +108,35 @@ p {
   #logo-div {
     font-size: 1.36em;
   }
+}
+
+.project {
+  width: 95%;
+  margin: 2em;
+  border-bottom: 1px solid #84a179;
+}
+
+h1, h2, h3 {
+  font-family: 'ArimaMadurai';
+  color: #56694f;
+  padding-left: 1em;
+  padding-top: 1em;
+
+}
+h2 {
+  /* padding-left: 3em; */
+  color: #84a179;
+}
+
+.icon {
+  height: 60px;
+  margin: 10px;
+  max-width: 10vw;
+  /* filter: grayscale(1) */
+}
+
+.icon:hover {
+  height: 80px;
+  margin: 0px;
+  filter: grayscale(0)
 }
