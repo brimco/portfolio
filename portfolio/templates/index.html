@@ -1,6 +1,10 @@
 {% extends 'layout.html' %}
 {% load static %}
 
+{% block script %}
+    <script src='{% static "js/index.js" %}'></script>
+{% endblock %}
+
 {% block body %}
     <div id='spacer' style='height: 200vh;'>
         <!-- this empty div gives the header room to shrink before reaching the content -->
@@ -8,35 +12,35 @@
 
     <div>
         <div>
-            <h3 class='lighter'>
-                I'm a web developer based in Tucson, Arizona. <br>
+            <h4 class='lighter'>
+                I'm a <span class='highlight'>web developer</span> based in Tucson, Arizona. <br><br>
                 I'm currently looking for an <span class='highlight'>internship</span> or <span class='highlight'>entry level</span> position.
-            </h3>
+            </h4>
         </div>
 
         <div>
             <h3 class="pad-top">
                 Experienced In:
             </h3>
-            <span class='icon' data-tooltip='HTML'>
+            <span class='tool-tip' data-tooltip='HTML'>
                 <img src="{% static '/images/html.svg' %}" class='icon'>
             </span>
-            <span class='icon' data-tooltip="CSS">
+            <span class='tool-tip' data-tooltip="CSS">
                 <img src="{% static '/images/css.svg' %}" class='icon'>
             </span>
-            <span class='icon' data-tooltip="JavaScript">
-                <img src="{% static '/images/javascript.svg' %}" class='icon' data-text='JavaScript'>
+            <span class='tool-tip' data-tooltip="JavaScript">
+                <img src="{% static '/images/javascript.svg' %}" class='icon'>
             </span>
-            <span class='icon' data-tooltip="Bootstrap">
-                <img src="{% static '/images/bootstrap.svg' %}" class='icon' data-text='Bootstrap'>
+            <span class='tool-tip' data-tooltip="Bootstrap">
+                <img src="{% static '/images/bootstrap.svg' %}" class='icon'>
             </span>
-            <span class='icon' data-tooltip="React">
+            <span class='tool-tip' data-tooltip="React">
                 <img src="{% static '/images/react.svg' %}" class='icon'>
             </span>
-            <span class='icon' data-tooltip="Python">
+            <span class='tool-tip' data-tooltip="Python">
                 <img src="{% static '/images/python.svg' %}" class='icon'>
             </span>
-            <span class='icon' data-tooltip="Django">
+            <span class='tool-tip' data-tooltip="Django">
                 <img src="{% static '/images/django.svg' %}" class='icon'>
             </span>
         </div>
@@ -44,10 +48,10 @@
             <h3 class='pad-top'>
                 Currently Learning: 
             </h3>
-            <span class='icon' data-tooltip="jQuery">
+            <span class='tool-tip' data-tooltip="jQuery">
                 <img src="{% static '/images/jquery.svg' %}" class='icon'>
             </span>
-            <span class='icon' data-tooltip="PostgreSQL">
+            <span class='tool-tip' data-tooltip="PostgreSQL">
                 <img src="{% static '/images/postgresql.svg' %}" class='icon'>
             </span>
         </div>
@@ -61,96 +65,13 @@
             </h5>              
         </div>
         <div class='pad-top pad-bottom'>
-            <h2 class='lighter'>
-                Feel free to check out some 
+            <h3 class='lighter'>
+                Check out some 
                 <a href='{% url "portfolio:projects" %}' class='highlight'>recent projects</a> 
                 or 
                 <a href='{% url "portfolio:contact" %}' class="highlight">get in touch.</a>
-            </h2>
-            
-            
+            </h3>
         </div>
     </div>
 
-{% endblock %}
-
-<h1>Home Page</h1>
-
-{% block script %}
-    <script>
-        // sizes in 'em'
-        let maxFontSize = 3
-        let minFontSize = 1
-        let changeFont = 0.0025
-        let hiFontRatio = 0.5
-
-        // heights in 'vh'
-        let maxHeight = 100
-        let minHeight = 14
-        let changeHeight = maxHeight / maxFontSize * changeFont
-        
-        function start() {
-            // mobile settings
-            if (window.matchMedia("only screen and (max-width: 760px)").matches) {
-                maxFontSize = 2.75
-                minHeight = 10
-                document.querySelector('#spacer').style.height = '150vh'
-            }
-
-            // get elements
-            const logo = document.querySelector('#header-logo') 
-            const header = document.querySelector('nav')
-            const hi = document.querySelector('#hi')
-
-            // set initial opacity and height
-            hi.style.opacity = '100%'
-            hi.style.height = '1em'
-
-            // set initial height of header
-            header.style.height = maxHeight + 'vh'
-            
-            // set initial font size
-            logo.style.fontSize = maxFontSize + 'em'
-            hi.style.fontSize = maxFontSize * hiFontRatio + 'em'
-
-            // set scroll to change size, header height
-            window.addEventListener('scroll', function(){
-                // set font size
-                let fontSize = Math.max(minFontSize, maxFontSize - (window.scrollY * changeFont))
-                logo.style.fontSize = fontSize + 'em'
-
-                // set height
-                let height = Math.max(minHeight, maxHeight - (window.scrollY * changeHeight))
-                header.style.height = height + 'vh'
-                logo.style.height = height + 'vh'
-
-                // fade hi opacity from 75 to 25, then shrink height to 0
-                const startFade = 0.75
-                const endFade = 0.15
-                const percentProgress = (height - minHeight) / (maxHeight - minHeight)
-                hi.style.fontSize = fontSize * hiFontRatio + 'em'
-                if (percentProgress > startFade) {
-                    hi.style.opacity = 1
-                }
-                else if (percentProgress > endFade) {
-                    hi.style.opacity = (percentProgress - endFade) / (startFade - endFade)
-                    hi.style.height = '1em'
-                }
-                else {
-                    hi.style.opacity = '0%'
-                    hi.style.height = percentProgress + 'em'
-                }
-            });
-        }
-
-        // start when page loaded and ready
-        if( document.readyState !== 'loading' ) {
-            start();
-            
-        } else {
-            document.addEventListener('DOMContentLoaded', function () {
-                start();
-            })
-        }
-    </script>
 {% endblock %}

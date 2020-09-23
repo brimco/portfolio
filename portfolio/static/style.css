@@ -120,6 +120,8 @@ p {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'ArimaMadurai';
   color: #56694f;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 .pad-top {
   padding-top: 3em;
@@ -128,16 +130,16 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 3em;
 }
 
-.icon > img {
+.icon {
   width: 8vw;
   margin: 2vw;
 }
-.icon {
+.tool-tip {
   position: relative;
 }
 
 /* tooltip adapted from: https://blog.logrocket.com/creating-beautiful-tooltips-with-only-css/ */
-.icon:before {
+.tool-tip:before {
   content: attr(data-tooltip); 
   position: absolute;   
   font-size: x-large;
@@ -151,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(-50%, 6vw);
 
 }
-.icon:hover:before {
+.tool-tip:hover:before {
   display:block;
 }
 
@@ -166,4 +168,26 @@ h1, h2, h3, h4, h5, h6 {
 .highlight {
   color: #56694f;
   font-size: 110%;
+}
+
+.success, .failed {
+  margin: auto;
+  margin-top: 1em;
+  padding: 0.5em;
+  width: fit-content;
+  border-radius: 8pt;
+}
+.success {
+  background-color: #d5dfd1;
+}
+.failed {
+  background-color: #ffc8c8;
+}
+
+form {
+  margin: 1em;
+  background-color: #d5dfd1;
+  padding: 1em;
+  border: 1px solid #56694f;
+  border-radius: 12pt;
 }
