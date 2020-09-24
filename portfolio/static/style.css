@@ -219,7 +219,11 @@ input[type=submit]:hover {
   font-weight: lighter;
 }
 
-#contact-logos > a > img {
+.contact-logo {
   width: 2.5em;
   padding: 5px;
+  transition: all .2s ease-in-out;
+}
+.contact-logo:hover {
+  transform: scale(1.2);
 }

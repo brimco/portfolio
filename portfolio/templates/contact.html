@@ -5,12 +5,12 @@
     <div class='pad-bottom'>
         <h3>Contact Me</h3>
 
-        <div id='contact-logos'>
-            <a href='https://github.com/brimco' target="_blank"><img src="{% static 'images/github.svg' %}"></a>
-            <a href='https://www.linkedin.com/in/brianne-mcomber/' target="_blank"><img src="{% static 'images/linkedin.svg' %}"></a>
-            <a href='mailto:bri.mcomber@gmail.com'><img src="{% static 'images/email.svg' %}"></a>    
-        </div>
+        <!-- contact links -->
+        <a href='https://github.com/brimco' target="_blank"><img src="{% static 'images/github.svg' %}" class='contact-logo'></a>
+        <a href='https://www.linkedin.com/in/brianne-mcomber/' target="_blank"><img src="{% static 'images/linkedin.svg' %}" class='contact-logo'></a>
+        <a href='{{ mail_link }}'><img src="{% static 'images/email.svg' %}" class='contact-logo'></a>    
 
+        <!-- message form -->
         <form action='{% url "portfolio:contact" %}' method="post">
             {% csrf_token %}
             <p class="input-label">Name</p>
@@ -22,6 +22,7 @@
             <input type="submit" value="Send">
         </form>
 
+        <!-- success/failure message after submitted -->
         {% if message %}
             <p class='{{ message_class }}'>{{ message }}</p>
         {% endif %}
