@@ -2,32 +2,28 @@
 {% load static %}
 
 {% block body %}
-    <h4 class='lighter'>
-        I'm currently looking for an <span class='highlight'>internship</span> or <span class='highlight'>entry level</span> position.
-    </h4>
+    <div class='pad-bottom'>
+        <h3>Contact Me</h3>
 
-    <div>
+        <div id='contact-logos'>
+            <a href='https://github.com/brimco' target="_blank"><img src="{% static 'images/github.svg' %}"></a>
+            <a href='https://www.linkedin.com/in/brianne-mcomber/' target="_blank"><img src="{% static 'images/linkedin.svg' %}"></a>
+            <a href='mailto:bri.mcomber@gmail.com'><img src="{% static 'images/email.svg' %}"></a>    
+        </div>
+
         <form action='{% url "portfolio:contact" %}' method="post">
             {% csrf_token %}
-            Name:<br>
+            <p class="input-label">Name</p>
             <input type="text" name="name"><br>
-            E-mail:<br>
+            <p class="input-label">Email</p>
             <input type="text" name="email"><br>
-            Message:<br>
-            <input type="text" name="message" size="50"><br><br>
+            <p class="input-label">Message</p>
+            <textarea  name="message" rows=5></textarea><br><br>
             <input type="submit" value="Send">
         </form>
 
         {% if message %}
             <p class='{{ message_class }}'>{{ message }}</p>
         {% endif %}
-
-        <div class='pad-top pad-bottom'>
-            <a href='https://github.com/brimco' target="_blank"><img src="{% static 'images/github.svg' %}" class='icon'></a>
-            <a href='https://www.linkedin.com/in/brianne-mcomber/' target="_blank"><img src="{% static 'images/linkedin.svg' %}" class='icon'></a>
-            <a href='mailto:bri.mcomber@gmail.com'><img src="{% static 'images/email.svg' %}" class='icon'></a>
-        </div>
     </div>
 {% endblock %}
-
-<h1>Home Page</h1>
