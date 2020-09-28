@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core.mail import send_mail
 import json
-from os import getenv
+from os import getenv, listdir, getcwd
 
+from .models import Project
 
 # Create your views here.
 
@@ -11,7 +12,8 @@ def index(request):
     return render(request, 'index.html')
 
 def projects(request):
-    return render(request, 'projects.html')
+    projects = Project.objects.filter(active=True).order_by('order')
+    return render(request, 'projects.html', {'projects': projects})
 
 def contact(request):
     message = ''
@@ -21,7 +23,7 @@ def contact(request):
         data = request.POST
         success = send_mail(
             subject=f"Portfolio message from {data['name']}",
-            message=f"Message from {data['name']} ({data['email']}): {data['message']}",
+            message=f"Message from {data['name']} ({data['email']}):\n\n {data['message']}",
             from_email=data['email'], 
             recipient_list=[my_email],
         )
@@ -30,7 +32,7 @@ def contact(request):
             message = '✓ Email was sent.'
             message_class = 'success'
         else:
-            message = f'email: {my_email}. There was an error sending the message. Please try again later or reach out another way.'
+            message = 'There was an error sending the message. Please try again later or reach out another way.'
             message_class = 'failed'
 
     return render(request, 'contact.html', {'message': message, 'message_class': message_class, 'mail_link': f'mailto:{my_email}'})

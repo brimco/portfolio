@@ -1,0 +1,10 @@
+{% load static %}
+
+<div>
+    <h2>{{ project.name }}</h2>
+    <p>{{ project.description }}</p>
+
+    {% for image in project.ordered_images %}
+        <img src='{{ image.image.url }}' width=200>
+    {% endfor %}
+</div>
