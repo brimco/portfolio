@@ -6,6 +6,7 @@ class Project(models.Model):
     name = models.CharField(max_length=64)
     description = models.CharField(max_length=256)
     active = models.BooleanField(default=True)
+    link = models.URLField(blank=True)
     order = models.IntegerField(default=1)
 
     objects = models.Manager()

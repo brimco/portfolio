@@ -1,10 +1,22 @@
 {% load static %}
 
 <div>
-    <h2>{{ project.name }}</h2>
-    <p>{{ project.description }}</p>
+    <div class='project'>
+        <img src='{{ project.ordered_images.0.image.url }}' onclick="return openModal('{{ project.id }}')">
+        <h2>{{ project.name }}</h2>
+        <p>{{ project.description }}</p>
+        {% if project.link %}
+            <a href='{{ project.link }}' target="_blank">Go <img src='{% static "/images/externallink.svg" %}'></a>
+        {% endif %}
+    </div>
 
-    {% for image in project.ordered_images %}
-        <img src='{{ image.image.url }}' width=200>
-    {% endfor %}
+    <div class='imgModal' id='{{ project.id }}'>
+        {% for image in project.ordered_images %}
+            <img class='modalImg' src='{{ image.image.url }}'>
+        {% endfor %}
+        <button onclick="return closeModal()">Close</button>
+        <button onclick="return changeImg(-1, '{{ project.id }}')">Left</button>
+        <button onclick="return changeImg(1, '{{ project.id }}')">Right</button>
+    </div>
+
 </div>
