@@ -3,56 +3,8 @@
 {% block script %}
     <script>
         function openModal(projectId) {
-            document.querySelectorAll('.imgModal').forEach(modal => {
-                if (modal.id == projectId) {
-                    modal.style.display = 'block'
-                    showImg(projectId, 1)
-                    return
-                }
-            })
+            $(`#modal-${projectId}`).modal('show')
         }
-        function closeModal() {
-            document.querySelectorAll('.imgModal').forEach(modal => {
-                modal.style.display = 'none'
-            })
-        }
-
-        // key = projectId, value = current index
-        const imgIndexes = {} 
-
-        function changeImg(moveBy, projectId) {
-            if (!(projectId in imgIndexes))  {
-                imgIndexes[projectId] = 1
-            }
-            imgIndexes[projectId] += moveBy
-            showImg(projectId, imgIndexes[projectId])
-        }
-        
-        function showImg(projectId, imageToShow) {         
-            let imgIdx = 0
-            for (let child of document.getElementById(projectId).children) {
-                if (child.tagName == 'IMG') {
-                    imgIdx += 1
-                    if (imgIdx == imageToShow) {
-                        child.style.display = 'block'
-                    }
-                    else {
-                        child.style.display = 'none'
-                    }
-                }
-            }
-            // if past the last one, show the first
-            if (imageToShow > imgIdx) {
-                showImg(projectId, 1)
-                imgIndexes[projectId] = 1
-            }
-            // if before the first, show the last
-            if (imageToShow < 1) {
-                showImg(projectId, imgIdx)
-                imgIndexes[projectId] = imgIdx
-            }
-        }
-
     </script>
 {% endblock %}
 
