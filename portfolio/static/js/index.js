@@ -6,10 +6,11 @@ let hiFontRatio = 0.5
 
 // heights in 'vh'
 let maxHeight = 100
-let minHeight = 14
+let minHeight = 8
 let changeHeight = maxHeight / maxFontSize * changeFont
 
 function start() {
+    console.log('start');
     // mobile settings
     if (window.matchMedia("only screen and (max-width: 760px)").matches) {
         maxFontSize = 2.75
@@ -35,6 +36,7 @@ function start() {
 
     // set scroll to change size, header height
     window.addEventListener('scroll', function(){
+        console.log('scroll');
         // set font size
         let fontSize = Math.max(minFontSize, maxFontSize - (window.scrollY * changeFont))
         logo.style.fontSize = fontSize + 'em'
