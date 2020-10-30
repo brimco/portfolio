@@ -19,20 +19,32 @@ def contact(request):
     message = ''
     message_class = None
     my_email = getenv('EMAIL_HOST_USER')
+    data = {'name': '', 'email': '', 'message': ''}
+
     if request.method == 'POST':
         data = request.POST
-        success = send_mail(
-            subject=f"Portfolio message from {data['name']}",
-            message=f"Message from {data['name']} ({data['email']}):\n\n {data['message']}",
-            from_email=data['email'], 
-            recipient_list=[my_email],
-        )
-
-        if success:
-            message = '✓ Message was sent.'
-            message_class = 'success'
-        else:
-            message = f'There was an error sending the message. Please <a href="mailto:{my_email}">send an email</a> instead.'
+        if data['name'] == '' or data['email'] == '' or data['message'] == '':
+            message = 'Please fill out every field before submitting.'
             message_class = 'failed'
+        else:
+            success = send_mail(
+                subject=f"Portfolio message from {data['name']}",
+                message=f"Message from {data['name']} ({data['email']}):\n\n {data['message']}",
+                from_email=data['email'], 
+                recipient_list=[my_email],
+            )
 
-    return render(request, 'contact.html', {'message': message, 'message_class': message_class, 'mail_link': f'mailto:{my_email}'})
+            if success:
+                message = '✓ Message was sent.'
+                message_class = 'success'
+            else:
+                message = f'There was an error sending the message. Please <a href="mailto:{my_email}">send an email</a> instead.'
+                message_class = 'failed'
+
+    return render(request, 'contact.html', {
+        'message': message, 
+        'message_class': message_class,
+        'name': data['name'],
+        'email': data['email'],
+        'form_message': data["message"],
+    })
