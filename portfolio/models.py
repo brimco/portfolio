@@ -9,6 +9,7 @@ class Project(models.Model):
     active = models.BooleanField(default=True)
     link = models.URLField(blank=True)
     order = models.IntegerField(default=1)
+    code_url = models.URLField(blank=True)
 
     objects = models.Manager()
 
@@ -24,8 +25,9 @@ class ProjectImage(models.Model):
     def get_path(self, filename):
         return self.project.name + '\\' + filename
 
-    name = models.TextField(default='', blank=True)
+    name = models.CharField(max_length=64, default='', blank=True)
     image = CloudinaryField('image')
+    # image = models.ImageField(upload_to=get_path)
     description = models.TextField(null=True, blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='images')
     order = models.IntegerField(default=1)

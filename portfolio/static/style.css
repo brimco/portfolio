@@ -141,9 +141,13 @@ p {
   float: right;
   transition: all .2s ease-in-out;
   width: fit-content !important;
+  margin-left: 1em;
+  margin-top: 1em;
 }
 .project > a > img {
   width: 1em;
+  margin-left: 0.5em;
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
