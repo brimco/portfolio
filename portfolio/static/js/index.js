@@ -10,22 +10,27 @@ let minHeight = 8
 let changeHeight = maxHeight / maxFontSize * changeFont
 
 function start() {
-    console.log('start');
-    // mobile settings
-    if (window.matchMedia("only screen and (max-width: 760px)").matches) {
-        maxFontSize = 2.75
-        minHeight = 10
-        document.querySelector('#spacer').style.height = '150vh'
-    }
-
     // get elements
     const logo = document.querySelector('#header-logo') 
     const header = document.querySelector('nav')
     const hi = document.querySelector('#hi')
+    const header_right = document.querySelector('#header-right')
+    const header_left = document.querySelector('#header-left')
+
+    // mobile settings
+    if (window.matchMedia("only screen and (max-width: 760px)").matches) {
+        maxFontSize = 2.4
+        minHeight = 10
+        document.querySelector('#spacer').style.height = '150vh'
+        header_left.style.marginRight = '1em'
+        header_right.style.marginLeft = '1em'
+    }
 
     // set initial opacity and height
-    hi.style.opacity = '100%'
+    hi.style.opacity = 1
     hi.style.height = '1em'
+    header_right.style.opacity = 0
+    header_left.style.opacity = 0
 
     // set initial height of header
     header.style.height = maxHeight + 'vh'
@@ -53,14 +58,21 @@ function start() {
         hi.style.fontSize = fontSize * hiFontRatio + 'em'
         if (percentProgress > startFade) {
             hi.style.opacity = 1
+            header_left.style.opacity = 0
+            header_right.style.opacity = 0
         }
         else if (percentProgress > endFade) {
-            hi.style.opacity = (percentProgress - endFade) / (startFade - endFade)
+            let opactiy = (percentProgress - endFade) / (startFade - endFade)
+            hi.style.opacity = opactiy
             hi.style.height = '1em'
+            header_right.style.opacity = 1 - opactiy
+            header_left.style.opacity = 1 - opactiy
         }
         else {
-            hi.style.opacity = '0%'
+            hi.style.opacity = 0
             hi.style.height = percentProgress + 'em'
+            header_right.style.opacity = 1
+            header_right.style.opacity = 1
         }
     });
 }

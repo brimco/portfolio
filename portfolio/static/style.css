@@ -266,3 +266,8 @@ input[type=submit]:hover , .project > a:hover {
 .carousel-control-prev {
     filter: invert(100%);
 }
+
+.title {
+  padding-top: 2em;
+  padding-bottom: 0.5em;
+}
