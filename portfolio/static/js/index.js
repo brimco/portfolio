@@ -69,7 +69,7 @@ function start() {
         else {
             hi.style.opacity = 0
             hi.style.height = percentProgress + 'em'
-            header_right.style.opacity = 1
+            header_left.style.opacity = 1
             header_right.style.opacity = 1
         }
     });
