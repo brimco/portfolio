@@ -98,6 +98,7 @@ a:hover {
   font-family: 'ArimaMadurai';
   text-align: left;
   padding-left: 1ch;
+  display: hidden;
 }
 
 p {
@@ -159,8 +160,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .icon {
-  width: 8vw;
-  margin: 2vw;
+  width: 7vw;
+  margin: 1vw;
   transition: all .2s ease-in-out;
 }
 .tool-tip {
@@ -179,7 +180,7 @@ h1, h2, h3, h4, h5, h6 {
   /* position tooltip below */
   top: 100%;
   left: 50%;
-  transform: translate(-50%, 6vw);
+  transform: translate(-50%, 4vw);
 
 }
 .tool-tip:hover:before {

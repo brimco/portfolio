@@ -26,8 +26,10 @@
             <nav>
                 <a href="{% url 'portfolio:projects' %}"  id='header-left'>Projects</a>
                 <div id='logo-div'>
-                    <div id='hi'>Hi, I'm</div>
-                    <a href="{% url 'portfolio:index' %}" id='header-logo'>Bri McOmber</a>
+                    <a href="{% url 'portfolio:index' %}">
+                        <div id='hi'>Hi, I'm</div>
+                        <span id='header-logo'>Bri McOmber</span>
+                    </a>
                 </div>
                 <a href="{% url 'portfolio:contact' %}" id='header-right'>Contact</a>
             </nav>
