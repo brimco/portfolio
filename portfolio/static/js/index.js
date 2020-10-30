@@ -14,8 +14,6 @@ function start() {
     const logo = document.querySelector('#header-logo') 
     const header = document.querySelector('nav')
     const hi = document.querySelector('#hi')
-    const header_right = document.querySelector('#header-right')
-    const header_left = document.querySelector('#header-left')
 
     // mobile settings
     if (window.matchMedia("only screen and (max-width: 760px)").matches) {

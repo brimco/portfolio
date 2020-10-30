@@ -110,6 +110,10 @@ p {
   #logo-div {
     font-size: 1.36em;
   }
+  #header-right, #header-left {
+    margin-right: 1em;
+    margin-left: 1em;
+  }
 }
 
 .project {
@@ -124,12 +128,12 @@ p {
   overflow: hidden;
 }
 .project > img {
-  width: 300px;
+  max-width: 300px;
   float: left;
   box-shadow: -5px 5px 15px rgba(0,0,0,0.2);
   transition: all .2s ease-in-out;
   margin-right: 2em;
-}
+  }
 .project img:hover {
   transform: scale(1.05);
 }
