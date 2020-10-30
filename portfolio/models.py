@@ -24,8 +24,11 @@ class ProjectImage(models.Model):
     def get_path(self, filename):
         return self.project.name + '\\' + filename
 
-    # image = models.ImageField(upload_to=get_path)
+    name = models.TextField(default='', blank=True)
     image = CloudinaryField('image')
     description = models.TextField(null=True, blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='images')
     order = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f'{self.project.name}: {self.name} ({self.order})'
