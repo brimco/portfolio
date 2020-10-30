@@ -8,6 +8,7 @@
 {% block body %}
     <div class='pad-bottom'>
         <h3>Contact Me</h3>
+        <p>Have a question or want to work together? <br>I'd love to hear from you.</p>
 
         <!-- contact links -->
         <a href='https://github.com/brimco' target="_blank"><img src="{% static 'images/github.svg' %}" class='contact-logo'></a>
@@ -28,7 +29,7 @@
 
         <!-- success/failure message after submitted -->
         {% if message %}
-            <p class='{{ message_class }}'>{{ message }}</p>
+            <p class='{{ message_class }}'>{{ message|safe }}</p>
         {% endif %}
     </div>
 {% endblock %}

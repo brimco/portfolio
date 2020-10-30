@@ -29,10 +29,10 @@ def contact(request):
         )
 
         if success:
-            message = '✓ Email was sent.'
+            message = '✓ Message was sent.'
             message_class = 'success'
         else:
-            message = 'There was an error sending the message. Please try again later or reach out another way.'
+            message = f'There was an error sending the message. Please <a href="mailto:{my_email}">send an email</a> instead.'
             message_class = 'failed'
 
     return render(request, 'contact.html', {'message': message, 'message_class': message_class, 'mail_link': f'mailto:{my_email}'})
