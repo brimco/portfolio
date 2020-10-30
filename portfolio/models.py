@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -22,7 +23,9 @@ class Project(models.Model):
 class ProjectImage(models.Model):
     def get_path(self, filename):
         return self.project.name + '\\' + filename
-    image = models.ImageField(upload_to=get_path)
+
+    # image = models.ImageField(upload_to=get_path)
+    image = CloudinaryField('image')
     description = models.TextField(null=True, blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='images')
     order = models.IntegerField(default=1)

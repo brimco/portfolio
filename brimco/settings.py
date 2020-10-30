@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
-import os
+import dj_database_url, os, cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -135,5 +135,13 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 # set up media 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+
+# Cloudinary settings
+cloudinary.config(
+    cloud_name = os.environ.get('CLOUD_NAME'),
+    api_key = os.environ.get('CLOUD_API_KEY'),
+    api_secret = os.environ.get('CLOUD_API_SECRET'),
+    secure = True
+)

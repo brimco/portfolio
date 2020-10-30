@@ -2,7 +2,6 @@
 
 <div>
     <div class='project'>
-        <!-- <img src='{{ project.ordered_images.0.image.url }}' onclick="return openModal('{{ project.id }}')"> -->
         <img src='{{ project.ordered_images.0.image.url }}' onclick="$(`#modal-${ '{{ project.id }}' }`).modal('show')">
 
         <h2>{{ project.name }}</h2>
