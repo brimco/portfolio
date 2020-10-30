@@ -14,14 +14,14 @@ function start() {
     const logo = document.querySelector('#header-logo') 
     const header = document.querySelector('nav')
     const hi = document.querySelector('#hi')
+    const header_right = document.querySelector('#header-right')
+    const header_left = document.querySelector('#header-left')
 
     // mobile settings
     if (window.matchMedia("only screen and (max-width: 760px)").matches) {
         maxFontSize = 2.4
         minHeight = 10
         document.querySelector('#spacer').style.height = '150vh'
-        header_left.style.marginRight = '1em'
-        header_right.style.marginLeft = '1em'
     }
 
     // set initial opacity and height
